@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:blockchain_wallet/contract_linking.dart';
 import 'package:blockchain_wallet/helloUI.dart';
 import 'package:provider/provider.dart';
-  
+
 void main() {
   runApp(MyApp());
 }
-  
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-      
+
     // Inserting Provider as a parent of HelloUI()
     return ChangeNotifierProvider<ContractLinking>(
       create: (_) => ContractLinking(),

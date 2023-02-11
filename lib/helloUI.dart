@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:blockchain_wallet/contract_linking.dart';
 import 'package:provider/provider.dart';
-  
+
 class HelloUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-      
+
     // Getting the value and object or contract_linking
     var contractLink = Provider.of<ContractLinking>(context);
-  
+
     TextEditingController yourNameController = TextEditingController();
-  
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Hello World !"),

@@ -41,38 +41,38 @@ ContractLinking() {
     await getCredentials();
     await getDeployedContract();
   }
-  
+
   Future<void> getAbi() async {
-      
+
     // Reading the contract abi
     String abiStringFile =
         await rootBundle.loadString("build/contracts/HelloWorld.json");
     print(abiStringFile);
     var jsonAbi = jsonDecode(abiStringFile);
     _abiCode = jsonEncode(jsonAbi["abi"]);
-  
+
     _contractAddress =
         EthereumAddress.fromHex(jsonAbi["networks"]["5777"]["address"]);
   }
-  
+
   Future<void> getCredentials() async {
     _credentials = EthPrivateKey.fromHex(_privateKey);
   }
-  
+
   Future<void> getDeployedContract() async {
-      
+
     // Telling Web3dart where our contract is declared.
     _contract = DeployedContract(
         ContractAbi.fromJson(_abiCode, "HelloWorld"), _contractAddress);
-  
+
     // Extracting the functions, declared in contract.
     _yourName = _contract.function("yourName");
     _setName = _contract.function("setName");
     getName();
   }
-  
+
   getName() async {
-      
+
     // Getting the current name declared in the smart contract.
     var currentName = await _client
         .call(contract: _contract, function: _yourName, params: []);
